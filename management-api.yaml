@@ -11,18 +11,34 @@ info:
   version: 2.0.0
   # x-ibm-name: ClientCredentialsFlow
   title: Auth0 Management API
+  termsOfService: https://auth0.com/legal
+  contact:
+    name: Auth0 Community Support
+    url: https://community.auth0.com
+  license:
+    # Figure out the correct license
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
 
+externalDocs: 
+  description: Auth0 Management API v2 Docs
+  url: https://auth0.com/docs/api/management/v2
 security:
   - bearer: 
+    # Do scopes go here?
     - "read:branding"
     - "update:branding"
+
 servers:
-- url: https://{tenant}.auth0.com
+- url: https://{tenant}{region}.auth0.com
   description: Auth0 Management API
   variables:
     tenant:
       default: demo
-      description: this value is assigned by the service provider, in this example `gigantic-server.com`
+      description: "this value reflects your Auth0 tenant name."
+    region:
+      default: '.us'
+      description: if your tenant is older then 6 months, useindicate your tenant's region here (`.us`, `.au` or `.eu`)
 paths:
   /api/v2/branding:
     get:
