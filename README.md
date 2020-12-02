@@ -1,2 +1,3 @@
-# auth0-api-swagger
-Swagger files for Auth0 Management and Authentication APIs
+# Auth0 Management and Authentication APIs
+
+OpenAPI 3 files for Auth0 Management and Authentication APIs
