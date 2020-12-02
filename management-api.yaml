@@ -11,16 +11,18 @@ info:
   version: 2.0.0
   # x-ibm-name: ClientCredentialsFlow
   title: Auth0 Management API
-# servers:
-#   -
-#     url: "{tenant}.auth0.com"
-# schemes:
-#   - https
-# basePath: /
-# consumes:
-#   - application/x-www-form-urlencoded
-# produces:
-#   - application/json
+
+security:
+  - bearer: 
+    - "read:branding"
+    - "update:branding"
+servers:
+- url: https://{tenant}.auth0.com
+  description: Auth0 Management API
+  variables:
+    tenant:
+      default: demo
+      description: this value is assigned by the service provider, in this example `gigantic-server.com`
 paths:
   /api/v2/branding:
     get:
@@ -108,9 +110,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  securitySchemes:
+    bearer:
+      description: "Auth0 Management API Explorer token"
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     BrandingSettingsResponse:
       type: object
+      
       properties:
         color:
           type: object
